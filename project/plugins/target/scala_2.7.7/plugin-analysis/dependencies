@@ -1,0 +1,9 @@
+#Source Dependencies
+#Wed Sep 22 13:46:40 PDT 2010
+src_managed/standard-project-0.7.1/com/twitter/sbt/FileFilter.scala=src_managed/standard-project-0.7.1/com/twitter/sbt/StandardProject.scala
+src_managed/standard-project-0.7.1/com/twitter/sbt/Versions.scala=src_managed/standard-project-0.7.1/com/twitter/sbt/StandardProject.scala
+src_managed/standard-project-0.7.1/com/twitter/sbt/GithubPublisher.scala=
+src_managed/standard-project-0.7.1/com/twitter/sbt/SourceControlledProject.scala=src_managed/standard-project-0.7.1/com/twitter/sbt/StandardProject.scala
+src_managed/standard-project-0.7.1/com/twitter/sbt/SubversionPublisher.scala=
+src_managed/standard-project-0.7.1/com/twitter/sbt/NullLogger.scala=src_managed/standard-project-0.7.1/com/twitter/sbt/Versions.scala\:src_managed/standard-project-0.7.1/com/twitter/sbt/SourceControlledProject.scala
+src_managed/standard-project-0.7.1/com/twitter/sbt/StandardProject.scala=

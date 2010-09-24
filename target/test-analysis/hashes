@@ -1,0 +1,4 @@
+#Source Hashes
+#Thu Sep 23 18:34:02 PDT 2010
+src/test/scala/com/twitter/node_registry/TestRunner.scala=51a4981d0e08d3829215821e409a0d6c3ad17ef5
+src/test/scala/com/twitter/node_registry/SampleSpec.scala=882ec82016e551798952771a30c1415df8418c46

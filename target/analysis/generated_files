@@ -1,0 +1,4 @@
+#Generated Classes
+#Thu Sep 23 18:33:55 PDT 2010
+src/main/scala/com/twitter/node_registry/Main.scala=target/classes/com/twitter/node_registry/Main.class\:target/classes/com/twitter/node_registry/Main$.class
+src/main/scala/com/twitter/node_registry/NodeRegistry.scala=target/classes/com/twitter/node_registry/JsonSerializer.class\:target/classes/com/twitter/node_registry/ServerSet.class\:target/classes/com/twitter/node_registry/ZookeeperStore.class\:target/classes/com/twitter/node_registry/Serializer.class\:target/classes/com/twitter/node_registry/ServerSet$$anonfun$list$1.class\:target/classes/com/twitter/node_registry/ZookeeperStore$$anonfun$getNodes$1.class\:target/classes/com/twitter/node_registry/Store.class

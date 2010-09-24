@@ -1,0 +1,7 @@
+#External Dependencies
+#Thu Sep 23 18:33:54 PDT 2010
+/Users/ian/code/node-registry/project/boot/scala-2.7.7/lib/scala-library.jar=Project.scala
+/Users/ian/code/node-registry/project/plugins/target/scala_2.7.7/plugin-classes/com/twitter/sbt/SourceControlledProject.class=Project.scala
+/Users/ian/code/node-registry/project/plugins/target/scala_2.7.7/plugin-classes/com/twitter/sbt/Versions.class=Project.scala
+/Users/ian/code/node-registry/project/boot/scala-2.7.7/org.scala-tools.sbt/sbt/0.7.4/sbt_2.7.7-0.7.4.jar=Project.scala
+/Users/ian/code/node-registry/project/plugins/target/scala_2.7.7/plugin-classes/com/twitter/sbt/StandardProject.class=Project.scala
