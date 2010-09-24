@@ -90,16 +90,29 @@ class ZookeeperStore(servers: Iterable[String], sessionTimeout: Int, connectionR
   }
 }
 
-
+/**
+ * Server set takes a store and a serializer.
+ * This is what most people will want to use all the time
+ */
 class ServerSet(store: Store, serializer: Serializer) {
+  /**
+   * Join adds a server to the registry. "endpoints" is a Map that will be
+   * serialized and stored as the payload
+   */
   def join(host: String, port: Int, endpoints: immutable.Map[String, Int]) {
     store.registerNode(host, port, serializer.serialize(endpoints))
   }
 
+  /**
+   * Remove a server from the registry
+   */
   def remove(host: String, port: Int) {
     store.removeNode(host, port)
   }
 
+  /**
+   * Get a list of all nodes. Returns a map of "host:port" => deserialized data
+   */
   def list: Map[String, Map[String, Int]] = {
     store.getNodes.foldLeft(immutable.Map[String, Map[String, Int]]()) { (map, tuple) =>
       val (host, data) = tuple
