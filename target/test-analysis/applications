@@ -1,4 +1,0 @@
-#Classes with main methods
-#Thu Sep 23 18:34:02 PDT 2010
-src/test/scala/com/twitter/node_registry/TestRunner.scala=com.twitter.node_registry.TestRunner
-src/test/scala/com/twitter/node_registry/SampleSpec.scala=com.twitter.node_registry.NodeRegistrySpec
