@@ -1,6 +1,7 @@
 package com.twitter.node_registry
 
 import org.specs._
+import org.specs.util.Duration
 import scala.collection._
 
 class TestStore extends Store {
@@ -43,9 +44,9 @@ object NodeRegistrySpec extends Specification {
     "track a host" in {
       val store = new ZookeeperStore(Set("localhost:2181"), 10000, 10000, "/aCompany/aService/")
       store.registerNode("somehost.domain.com", 1234, "data")
-      store.getNodes must haveKey("somehost.domain.com:1234")
+      store.getNodes must haveKey("somehost.domain.com:1234").eventually
       store.removeNode("somehost.domain.com", 1234)
-      store.getNodes mustNot haveKey("somehost.domain.com:1234")
+      store.getNodes must eventually(not(haveKey("somehost.domain.com:1234")))
     }
   }
 
@@ -55,8 +56,8 @@ object NodeRegistrySpec extends Specification {
       val serializer = new JsonSerializer
       val set = new ServerSet(store, serializer)
       set.join("somehost.domain.com", 1234, immutable.Map("admin" -> 1235))
-      set.list must haveKey("somehost.domain.com:1234")
-      set.list("somehost.domain.com:1234") must contain("admin" -> 1235)
+      set.list must haveKey("somehost.domain.com:1234").eventually
+      set.list("somehost.domain.com:1234") must contain("admin" -> 1235).eventually
     }
   }
 }

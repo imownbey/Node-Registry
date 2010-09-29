@@ -43,21 +43,33 @@ trait Store {
 class ZookeeperStore(servers: Iterable[String], sessionTimeout: Int, connectionRetryIntervalMS: Int, basePath: String) extends Store {
   private val log = Logger.get
   var zk: ZooKeeperClient = null
+  private var ephemerals: mutable.Map[String, String] = mutable.Map()
   private var connected = false
 
   connectToZookeeper()
 
   private def connectToZookeeper() {
     log.info("Attempting connection to Zookeeper servers %s with base path %s".format(servers, basePath))
-    zk = new ZooKeeperClient(servers.mkString(","), sessionTimeout, basePath)
+    new ZooKeeperClient(servers.mkString(","), sessionTimeout, basePath, handleZookeeperConnect(_))
+  }
+
+  private def handleZookeeperConnect(zook: ZooKeeperClient): Unit = {
+    zk = zook
     zk.createPath("hosts")
+    ephemerals.synchronized {
+      ephemerals.foreach { case (node, data) => registerNode(node, data) }
+    }
+    zk.watchChildrenWithData[String]("hosts", ephemerals, { data: Array[Byte] => new String(data) })
   }
 
   override def registerNode(host: String, port: Int, data: String) {
+    registerNode("%s:%d".format(host, port), data)
+  }
+
+  def registerNode(nodePath: String, data: String) {
     var created = false
     val startTime = System.currentTimeMillis()
     val timeoutMS = sessionTimeout * 2
-    val nodePath = "%s:%d".format(host, port)
     while (!created && System.currentTimeMillis() < (startTime + timeoutMS)) {
       try {
         zk.create("hosts/%s".format(nodePath), data.getBytes, CreateMode.EPHEMERAL)
@@ -72,17 +84,10 @@ class ZookeeperStore(servers: Iterable[String], sessionTimeout: Int, connectionR
     if (!created) {
       throw new RuntimeException("Unable to create ephemeral node " + nodePath)
     }
-
   }
 
-  override def getNodes: immutable.Map[String, String] = {
-    zk.getChildren("hosts").foldLeft(immutable.Map[String, String]()) { (hosts, host) =>
-      try {
-        hosts ++ immutable.Map(host -> new String(zk.get("hosts/%s".format(host))))
-      } catch {
-        case e: KeeperException.NoNodeException => hosts
-      }
-    }
+  override def getNodes: immutable.Map[String, String] = ephemerals.synchronized {
+    immutable.Map[String, String]() ++ ephemerals
   }
 
   override def removeNode(host: String, port: Int) {
