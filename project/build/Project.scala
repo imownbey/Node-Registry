@@ -8,5 +8,5 @@ class NodeRegistry(info: ProjectInfo) extends StandardProject(info) {
   val configgy = "net.lag" % "configgy" % "1.6.1"
   val xrayspecs = "com.twitter" % "xrayspecs" % "1.0.7"  //--auto--
   val twitter = "com.twitter" % "json" % "1.1"
-  val zookeeper = "com.twitter" % "zookeeper-client" % "1.5"
+  val zookeeper = "com.twitter" % "zookeeper-client" % "1.5.1"
 }
