@@ -1,9 +1,0 @@
-#Source Hashes
-#Wed Sep 22 13:46:40 PDT 2010
-src_managed/standard-project-0.7.1/com/twitter/sbt/FileFilter.scala=94df5a19a3f81de8d97c0f2406708ed90a8bb152
-src_managed/standard-project-0.7.1/com/twitter/sbt/Versions.scala=a7e3e88c453ddf106f1c16d5eb34353c60f7f433
-src_managed/standard-project-0.7.1/com/twitter/sbt/GithubPublisher.scala=abe031745cf5557638f4a2c255c44ce130c9e5e1
-src_managed/standard-project-0.7.1/com/twitter/sbt/SourceControlledProject.scala=9e384a7995ceb42e1718573dc9e806c0adca159f
-src_managed/standard-project-0.7.1/com/twitter/sbt/SubversionPublisher.scala=6c194ee10da92bf7aeab96716ae41909b434f62d
-src_managed/standard-project-0.7.1/com/twitter/sbt/NullLogger.scala=050e3c0a971d147ea791a96fe2a403340c0f7b30
-src_managed/standard-project-0.7.1/com/twitter/sbt/StandardProject.scala=2530e7a4a9833600698a0e915ca6c2e2d300cd33
